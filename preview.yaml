@@ -1,0 +1,31 @@
+tiles:
+  - tile: header
+    name: PD header
+    sizes: [4x2, 6x3]
+    entity: sensor.pd_screen_header
+  - tile: battery
+    name: Delta Pro 3
+    options: { device: dp3 }
+    sizes: [3x2, 4x3]
+    entity: sensor.pd_screen_batteries
+  - tile: battery
+    name: Stream Ultra X
+    options: { device: ultra }
+    sizes: [4x3]
+    entity: sensor.pd_screen_batteries
+states:
+  sensor.pd_screen_header:
+    state: "on"
+    attributes: { mode: Solar Charge, tone: good, ctrl: true, grid_w: 120, total_w: 2350, tgt_w: -100, burst: true, story1: "Solar surplus is charging the", story2: "Ultra X first, then Delta Pro 3.", dp3_w: 800, ux_w: 1200, ac_w: 350 }
+  sensor.pd_screen_batteries:
+    state: "on"
+    attributes:
+      dp3: [62.5, 3.8, 800, 1500, 900, 800, 1, 1, 62, 60, 40, 20, 1, 1, 1]
+      ultra: [88.0, 1.9, 0, 800, 600, 590, 1, 0, 88, 75, 70, -1, 2, 1, 0]
+      ac: [40.0, 1.1, 0, 800, 0, 0, 1, 1, 40, 0, 0, -1, 0, 1, 1]
+      max: [15.0, 0.5, 0, 800, 0, 0, 0, 1, 15, 0, 0, -1, 0, 0, 0]
+      conn_dp3: BLE
+      conn_ultra: BLE
+      conn_ac: BLE
+      conn_max: IoB
+      glow_tone: accent

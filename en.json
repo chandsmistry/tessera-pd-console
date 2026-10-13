@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "name": "English"
+  },
+  "screen": {
+    "name": "Power Distribution"
+  },
+  "app": {
+    "name": "Power Distribution console",
+    "summary": "The Power Distribution header and the battery cards of the energy dashboard, from two template sensors in Home Assistant.",
+    "header_name": "PD header",
+    "header_example": "Power Distribution Console",
+    "battery_name": "PD battery",
+    "battery_example": "Delta Pro 3 and its bars",
+    "device": "Battery",
+    "device_hint": "Which battery this tile shows. Tap the tile to flip its eligibility.",
+    "device_dp3": "Delta Pro 3",
+    "device_ultra": "Stream Ultra X",
+    "device_ac": "Stream AC Pro",
+    "device_max": "Stream Max"
+  }
+}

@@ -1,0 +1,50 @@
+# Power Distribution console: the header and the four battery cards of the Home Assistant dashboard, as tiles.
+# They read two flat template sensors (README.md); the old Lovelace cards and their sensors stay as they are.
+id: pd_console
+version: 0.1.0
+api: "0.8"
+icon: flash
+maintainer: chandsmistry
+license: MIT
+stage: beta
+topics: [energy, home]
+requires:
+  esphome: 2026.6.2
+boards: any
+flash_kb: 12
+
+permissions:
+  # Tapping a battery tile flips its eligibility; tapping the header while Burst is on turns Burst off.
+  home_assistant_actions: ["input_boolean.turn_on", "input_boolean.turn_off"]
+
+tiles:
+  - id: header
+    name: header_name
+    icon: flash
+    sizes: { min: 4x2, max: 9x4 }
+    memory: 1800
+    domains: [sensor]
+    attributes: [mode, tone, ctrl, grid_w, total_w, tgt_w, burst, story1, story2, dp3_w, ux_w, ac_w]
+    has_attributes: [story1, tgt_w]
+    example: header_example
+    preview: { title: "{name}", value: "{mode}" }
+  - id: battery
+    name: battery_name
+    icon: flash
+    sizes: { min: 3x2, max: 6x4 }
+    memory: 2400
+    domains: [sensor]
+    attributes: [dp3, ultra, ac, max, conn_dp3, conn_ultra, conn_ac, conn_max, glow_tone]
+    has_attributes: [dp3, ultra]
+    example: battery_example
+    options:
+      - id: device
+        kind: choice
+        label: device
+        hint: device_hint
+        default: dp3
+        choices:
+          - { value: dp3, label: device_dp3 }
+          - { value: ultra, label: device_ultra }
+          - { value: ac, label: device_ac }
+          - { value: max, label: device_max }
